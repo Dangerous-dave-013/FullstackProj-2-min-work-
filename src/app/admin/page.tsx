@@ -11,7 +11,12 @@ export default function AdminPage() {
     try {
       const res = await fetch('/api/feedback');
       const data = await res.json();
-      setFeedbacks(data);
+      if (res.ok && Array.isArray(data)) {
+        setFeedbacks(data);
+      } else {
+        console.error('Failed to fetch data:', data);
+        setFeedbacks([]);
+      }
     } catch (err) {
       console.error(err);
     } finally {

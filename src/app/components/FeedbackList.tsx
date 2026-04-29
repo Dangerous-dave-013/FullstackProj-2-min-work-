@@ -34,7 +34,7 @@ export default function FeedbackList({
     }
   };
 
-  if (feedbacks.length === 0) {
+  if (!feedbacks || feedbacks.length === 0) {
     return <p className="text-gray-500 italic text-center py-8">No feedback yet. Be the first to review!</p>;
   }
 
